@@ -95,7 +95,7 @@ with tab2:
     if st.button("Predecir imagen"):
         if source_img is not None:
 
-            st.image(source_img)
+            #st.image(source_img)
             
             # Leer la imagen subida con OpenCV sin modificar el color
             file_bytes = np.asarray(bytearray(source_img.read()), dtype=np.uint8)
