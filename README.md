@@ -2,4 +2,5 @@
 ## Integrantes:
 ### Vanesa Morales Taipe
 ### Luis Arenas Torres
+### Mauricio Camino Quintanilla
 ### Sophia Escalante Rodriguez
