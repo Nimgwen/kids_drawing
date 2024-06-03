@@ -62,6 +62,8 @@ with tab1:
             # Convertir la imagen a formato RGB
             image = Image.fromarray(canvas_result.image_data.astype('uint8'), 'RGBA')
             image = image.convert('RGB')
+
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             
             # Obtener el modelo seleccionado
             selected_model = modelos_disponibles[option]
