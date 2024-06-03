@@ -12,8 +12,6 @@ st.image("logo-upch-ing-des.webp", use_column_width=True)
 
 model = YOLO('best.pt')
 model2 = YOLO('last.pt')
-model3 = YOLO('bestmodel2.pt')
-model4 = YOLO('lastmodel2.pt')
 
 tab1, tab2 = st.tabs(["Haz un  dibujito ✍️", "Sube una imágen ⬆️"])
 
@@ -37,7 +35,7 @@ with tab1:
 
     realtime_update = st.checkbox("Actualizar en tiempo real", True)
 
-    modelos_disponibles = {'Modelo 1 (best.pt)': model, 'Modelo 2 (last.pt)': model2, 'Modelo 3 (bestmodel2.pt)': model3, 'Modelo 4 (lastmodel2.pt)': model4 }
+    modelos_disponibles = {'Modelo 1 (best.pt)': model, 'Modelo 2 (last.pt)': model2}
     option = st.selectbox("Escoja modelo: ", list(modelos_disponibles.keys()))
     # Create a canvas component
     canvas_result = st_canvas(
@@ -90,7 +88,7 @@ with tab2:
     source_img = st.file_uploader(
     "Escoge una imágen...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
     
-    modelos_disponibles = {'Modelo 1 (best.pt)': model, 'Modelo 2 (last.pt)': model2, 'Modelo 3 (bestmodel2.pt)': model3, 'Modelo 4 (lastmodel2.pt)': model4 }
+    modelos_disponibles = {'Modelo 1 (best.pt)': model, 'Modelo 2 (last.pt)': model2}
     option = st.selectbox("Escojaa modelo: ", list(modelos_disponibles.keys()))
 
     if st.button("Predecir imagen"):
