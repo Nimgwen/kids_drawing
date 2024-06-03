@@ -60,7 +60,6 @@ with tab1:
     if st.button("Predecir dibujo"):
         if canvas_result.image_data is not None:
             # Convertir la imagen a formato RGB
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             image = Image.fromarray(canvas_result.image_data.astype('uint8'), 'RGBA')
             
             image = image.convert('RGB')
