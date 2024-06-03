@@ -59,28 +59,32 @@ with tab1:
 
     if st.button("Predecir dibujo"):
         if canvas_result.image_data is not None:
-            # Convertir la imagen a formato RGB
+            # Convertir la imagen a formato RGBA
             image = Image.fromarray(canvas_result.image_data.astype('uint8'), 'RGBA')
-            
-            image = image.convert('RGB')
 
+            # Convertir la imagen a formato BGR
+            image_bgr = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
-            
+            # Convertir la imagen a formato RGB antes de pasarla al modelo
+            image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
+
             # Obtener el modelo seleccionado
             selected_model = modelos_disponibles[option]
-            
+
             # Config del modelo
             config = {
-                "conf": 0.2,   
-                "imgsz": 640,  
+                "conf": 0.2,
+                "imgsz": 640,
             }
-        
+
             # Realizar predicción en el dibujo con configuración
-            results = selected_model(image, **config)
-            
-            # Mostrar los resultados de la predicción
-            im = results[0].plot()
-            st.image(im)
+            results = selected_model(image_rgb, **config)
+
+            # Obtener la imagen anotada
+            annotated_image = results[0].plot()
+
+            # Mostrar la imagen resultante
+            st.image(annotated_image, channels="RGB")
         else:
             st.write("No hay imagen")
 
